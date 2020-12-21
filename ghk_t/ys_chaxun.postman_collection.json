@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "8c21339f-b1a3-46ed-9ec8-dd2d942b2ff4",
+		"name": "放映影片",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "放映影片的无效Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.reason).to.not.eql(\"成功的返回\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": "zh-CN,zh;q=0.9"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": "max-age=0"
+					},
+					{
+						"key": "Connection",
+						"type": "text",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Cookie",
+						"type": "text",
+						"value": "_ubf1a125279935e03c3eea0c3c0d=11cd7e6bd54494d3bb18584f7bf17672; JuheChannel=jHYmFpZHU%3D; _f91834e654f46d9ed5afc3c0d=past62e92b161d455df19827e55ac838c3c1man6868; hasReg=reged; jh-dtaf4a8u96q0iiqsba9g8a=0; _qddaz=QD.f7ka1b.c5o7w8.kitwnu9w; _qdda=3-1.1; _qddab=3-23kcmh.kitwnu9z; PHPSESSID=andg9ifmjefmmhvpg8f1bhgd95; acw_tc=76b20ffe16082833997467760e4bec84f5fe2db40bfcf26b61cd7a65d58b8a; XSRF-TOKEN=eyJpdiI6IkFYMnBLMkZHMXRXM05EdHBkSTBrQlE9PSIsInZhbHVlIjoic3o3ajhheHZFZklOazJjSXlQTFpmYjE3RkRTSEtqZkFhaWRZM1VuY0kwUjlYV2Z6Q0lGVjNsMWtodndsaEFYQnorQWJ1MWhlWGVObmRQdkdQT1M4SUE9PSIsIm1hYyI6ImMyYjdjYmQxOTUyNDQ0MzFkNzYzNWI2ZmI1ZDU1MWE2NGI5N2JlZWQ4OGFlNDk1ZWMxZGJmZWUwMzk3YzA2NWMifQ%3D%3D; juhe_cn_session=eyJpdiI6IkJQakdVaEdsWU93MG45SDF1OXd3bVE9PSIsInZhbHVlIjoieDVCK054ampoY0o0YmFmckV6ZVFHakptY3FrbnpvSUpaZGgyeFBQZjdCSmxSSm9nazdIMHZmNVlMc25FbWZmRUxDeUhzUldla2kyYWhWclwvckZWOGR3PT0iLCJtYWMiOiJjNTQ3YWFhNTgzMzYzYzM3MmExOWJiZGIwN2ZmNjlhNTUzYjYzMTBlYzhiNWViODA5MGU5OGUyZTk4NWYwODhhIn0%3D"
+					},
+					{
+						"key": "User-Agent",
+						"type": "text",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
+					}
+				],
+				"url": {
+					"raw": "http://v.juhe.cn/movie/query?key={{key_1}}&movieid={{mp4id}}",
+					"protocol": "http",
+					"host": [
+						"v",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"movie",
+						"query"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key_1}}"
+						},
+						{
+							"key": "movieid",
+							"value": "{{mp4id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "放映影片的信息",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"沐浴之王\");\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"汉语普通话\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"当前可请求的次数不足\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "zh-CN,zh;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "max-age=0",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "_ubf1a125279935e03c3eea0c3c0d=11cd7e6bd54494d3bb18584f7bf17672; JuheChannel=jHYmFpZHU%3D; _f91834e654f46d9ed5afc3c0d=past62e92b161d455df19827e55ac838c3c1man6868; hasReg=reged; jh-dtaf4a8u96q0iiqsba9g8a=0; _qddaz=QD.f7ka1b.c5o7w8.kitwnu9w; _qdda=3-1.1; _qddab=3-23kcmh.kitwnu9z; PHPSESSID=andg9ifmjefmmhvpg8f1bhgd95; acw_tc=76b20ffe16082833997467760e4bec84f5fe2db40bfcf26b61cd7a65d58b8a; XSRF-TOKEN=eyJpdiI6IkFYMnBLMkZHMXRXM05EdHBkSTBrQlE9PSIsInZhbHVlIjoic3o3ajhheHZFZklOazJjSXlQTFpmYjE3RkRTSEtqZkFhaWRZM1VuY0kwUjlYV2Z6Q0lGVjNsMWtodndsaEFYQnorQWJ1MWhlWGVObmRQdkdQT1M4SUE9PSIsIm1hYyI6ImMyYjdjYmQxOTUyNDQ0MzFkNzYzNWI2ZmI1ZDU1MWE2NGI5N2JlZWQ4OGFlNDk1ZWMxZGJmZWUwMzk3YzA2NWMifQ%3D%3D; juhe_cn_session=eyJpdiI6IkJQakdVaEdsWU93MG45SDF1OXd3bVE9PSIsInZhbHVlIjoieDVCK054ampoY0o0YmFmckV6ZVFHakptY3FrbnpvSUpaZGgyeFBQZjdCSmxSSm9nazdIMHZmNVlMc25FbWZmRUxDeUhzUldla2kyYWhWclwvckZWOGR3PT0iLCJtYWMiOiJjNTQ3YWFhNTgzMzYzYzM3MmExOWJiZGIwN2ZmNjlhNTUzYjYzMTBlYzhiNWViODA5MGU5OGUyZTk4NWYwODhhIn0%3D",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://v.juhe.cn/movie/query?key={{key_1}}&movieid={{mp4name}}",
+					"protocol": "http",
+					"host": [
+						"v",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"movie",
+						"query"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key_1}}"
+						},
+						{
+							"key": "movieid",
+							"value": "{{mp4name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
